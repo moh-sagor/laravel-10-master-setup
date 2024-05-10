@@ -1,0 +1,11 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Redirect all requests to the public directory
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ public/$1 [L]
+
+    # Remove "/public/" from the URL and rewrite to the corresponding Laravel route
+    RewriteCond %{REQUEST_URI} ^/public/(.*)$
+    RewriteRule ^public/(.*)$ /$1 [L]
+</IfModule>
